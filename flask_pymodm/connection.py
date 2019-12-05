@@ -1,5 +1,5 @@
 import pymodm
-from flask_pymodm.util import _get_connection_string
+from flask_pymodm.util import _get_uri
 
 __all__ = ['connect']
 
@@ -21,6 +21,6 @@ def connect(config=None, **kwargs):
     db_connection_alias = config.get('MONGODB_ALIAS_CONNECTION')
     mongodb_options = kwargs
     pymodm.connect(
-        _get_connection_string(db_username=db_username, db_password=db_password, db_host=db_host, db_port=db_port,
-                               db_name=db_name), alias=db_connection_alias, **mongodb_options)
+        _get_uri(db_username=db_username, db_password=db_password, db_host=db_host, db_port=db_port,
+                 db_name=db_name), alias=db_connection_alias, **mongodb_options)
     return pymodm.connection._get_connection(alias=db_connection_alias)
