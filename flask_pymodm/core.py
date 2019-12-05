@@ -24,6 +24,8 @@ class PyModm(object):
         app.config.setdefault('MONGODB_PASSWORD', None)
         app.config.setdefault('MONGODB_ALIAS_CONNECTION', 'default')
 
+        self.mongodb_options = kwargs
+
         # Use the newstyle teardown_appcontext if it's available,
         # otherwise fall back to the request context
         if hasattr(app, 'teardown_appcontext'):
@@ -43,7 +45,7 @@ class PyModm(object):
                 ctx.mongodb = pymodm.connect(
                     'mongodb://' + username + password + ctx.app.config.get('MONGODB_HOST') + ctx.app.config.get(
                         'MONGODB_PORT') + ctx.app.config.get('MONGODB_DB_NAME'),
-                    alias=ctx.app.config.get('MONGODB_ALIAS_CONNECTION'), **kwargs)
+                    alias=ctx.app.config.get('MONGODB_ALIAS_CONNECTION'), **self.mongodb_options)
 
             return getattr(ctx.mongodb, item)
 

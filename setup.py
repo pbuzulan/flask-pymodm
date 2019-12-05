@@ -6,10 +6,14 @@
     :copyright: (c) 2019 by Petru Buzulan, Daniele Dapuzzo.
     :license: MIT, see LICENSE for more details.
 """
+from os.path import join, dirname
 
 from setuptools import setup
 
 from flask_pymodm import __version__
+
+with open(join(dirname(__file__), 'flask_pymodm/__version__.py'), 'r') as f:
+    version = exec(f.read())
 
 
 def parse_requirements(filename):
@@ -20,7 +24,7 @@ def parse_requirements(filename):
 
 setup(
     name='Flask-Pymodm',
-    version=__version__,
+    version=version,
     url='https://github.com/pbuzulan/flask-pymodm',
     project_urls={
         "Documentation": "",
@@ -31,7 +35,7 @@ setup(
     author=['Petru Buzulan', 'Daniele Dapuzzo'],
     author_email=['buzulan.petru@gmail.com', 'dapuzzo.dapuzzo92@gmail.com'],
     description="Flask-Pymodm is a simple plugin for Pymodm",
-    long_description=open('README.rst').read(),
+    long_description='',  # open('README.rst').read(),
     packages=['flask_pymodm'],
     zip_safe=False,
     include_package_data=True,
