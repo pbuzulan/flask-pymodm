@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import pymodm
-from flask import current_app
 
 # Find the stack on which we want to store the database connection.
 # Starting with Flask 0.9, the _app_ctx_stack is the correct one,
@@ -32,7 +31,7 @@ class PyModm(object):
         else:
             app.teardown_request(self.teardown)
 
-    def __getattr__(self, item):
+    def __getattr__(self, item, **kwargs):
         ctx = stack.top
         if ctx is not None:
             if not hasattr(ctx, 'mongodb'):
@@ -44,7 +43,7 @@ class PyModm(object):
                 ctx.mongodb = pymodm.connect(
                     'mongodb://' + username + password + ctx.app.config.get('MONGODB_HOST') + ctx.app.config.get(
                         'MONGODB_PORT') + ctx.app.config.get('MONGODB_DB_NAME'),
-                    alias=ctx.app.config.get('MONGODB_ALIAS_CONNECTION'))
+                    alias=ctx.app.config.get('MONGODB_ALIAS_CONNECTION'), **kwargs)
 
             return getattr(ctx.mongodb, item)
 

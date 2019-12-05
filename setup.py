@@ -8,18 +8,25 @@
 """
 
 from setuptools import setup
-from os.path import join, dirname
 
-with open(join(dirname(__file__), 'flask_pymodm/__version__.py'), 'r') as f:
-    exec(f.read())
+from flask_pymodm import __version__
 
-with open(join(dirname(__file__), 'requirements.txt'), 'r') as f:
-    install_requires = f.read().split("\n")
+
+def parse_requirements(filename):
+    """ load requirements from a pip requirements file """
+    lineiter = (line.strip() for line in open(filename))
+    return [line for line in lineiter if line and not line.startswith("#")]
+
 
 setup(
     name='Flask-Pymodm',
     version=__version__,
-    url='https://github.com/corydolphin/flask-cors',
+    url='https://github.com/pbuzulan/flask-pymodm',
+    project_urls={
+        "Documentation": "",
+        "Code": "https://github.com/pbuzulan/flask-pymodm",
+        "Issue tracker": "https://github.com/pbuzulan/flask-pymodm/issues",
+    },
     license='MIT',
     author=['Petru Buzulan', 'Daniele Dapuzzo'],
     author_email=['buzulan.petru@gmail.com', 'dapuzzo.dapuzzo92@gmail.com'],
@@ -29,11 +36,11 @@ setup(
     zip_safe=False,
     include_package_data=True,
     platforms='any',
-    install_requires=install_requires,
+    install_requires=parse_requirements('requirements.txt'),
     tests_require=[
-        'nose'
+
     ],
-    test_suite='nose.collector',
+    test_suite='tests',
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
