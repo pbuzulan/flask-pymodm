@@ -11,7 +11,7 @@ def connect(config=None, **kwargs):
     """
     # Validate that the config is a dict
     if config is None or not isinstance(config, dict):
-        raise Exception('Invalid application configuration')
+        raise TypeError('Application configuration cannot be None or {}'.format(type(config)))
 
     db_username = config.get('MONGODB_USERNAME')
     db_password = config.get('MONGODB_PASSWORD')
