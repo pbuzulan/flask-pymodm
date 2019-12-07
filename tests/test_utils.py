@@ -9,7 +9,7 @@ class TestUtils(unittest.TestCase):
     db = "testDb"
 
     # noinspection PyTypeChecker
-    def test_get_uri_without_user(self):
+    def test_get_uri_without_auth(self):
         check_str = "mongodb://" + self.host + ":" + self.port + "/" + self.db
         self.assertEqual(flask_pymodm.util._get_uri(None, None, self.host, self.port, self.db), check_str)
 
