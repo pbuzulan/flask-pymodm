@@ -31,7 +31,7 @@ setup(
     },
     license='MIT',
     author=['Petru Buzulan', 'Daniele Dapuzzo'],
-    author_email=['buzulan.petru@gmail.com', 'dapuzzo.dapuzzo92@gmail.com'],
+    author_email=['buzulan.petru@gmail.com', 'daniele.dapuzzo92@gmail.com'],
     description="Flask-Pymodm is a simple plugin for Pymodm",
     long_description='',  # open('README.rst').read(),
     packages=['flask_pymodm'],
