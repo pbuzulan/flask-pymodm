@@ -46,6 +46,9 @@ MONGODB_USERNAME = "my_username"             # default is None
 MONGODB_PASSWORD = "my_password"             # default is None
 ```
 
+## Test
+To run test suite use the `tox` command.
+
 Links
 -----
 
