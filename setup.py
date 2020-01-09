@@ -10,8 +10,6 @@ from os.path import join, dirname
 
 from setuptools import setup
 
-from flask_pymodm import __version__
-
 with open(join(dirname(__file__), 'flask_pymodm/__version__.py'), 'r') as f:
     version = exec(f.read())
 
@@ -33,7 +31,7 @@ setup(
     },
     license='MIT',
     author=['Petru Buzulan', 'Daniele Dapuzzo'],
-    author_email=['buzulan.petru@gmail.com', 'dapuzzo.dapuzzo92@gmail.com'],
+    author_email=['buzulan.petru@gmail.com', 'daniele.dapuzzo92@gmail.com'],
     description="Flask-Pymodm is a simple plugin for Pymodm",
     long_description='',  # open('README.rst').read(),
     packages=['flask_pymodm'],
@@ -56,8 +54,6 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: Implementation :: CPython',
-        'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ]

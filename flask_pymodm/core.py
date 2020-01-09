@@ -5,6 +5,8 @@ from flask_pymodm.connection import connect
 
 
 class PyModm(object):
+    mongodb_options = None
+
     def __init__(self, app=None, **kwargs):
         self.app = None
         if app is None or not isinstance(app, Flask):
