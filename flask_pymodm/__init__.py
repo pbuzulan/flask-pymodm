@@ -1,5 +1,5 @@
 from .core import PyModm
-
+from flask_pymodm.__version__ import __version__
 __all__ = ['PyModm']
 
 # Set default logging handler to avoid "No handler found" warnings.
