@@ -1,5 +1,5 @@
 from .core import PyModm
-
+from . import __version__
 __all__ = ['PyModm']
 
 # Set default logging handler to avoid "No handler found" warnings.

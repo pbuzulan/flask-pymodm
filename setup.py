@@ -6,12 +6,18 @@
     :copyright: (c) 2019 by Petru Buzulan, Daniele Dapuzzo.
     :license: MIT, see LICENSE for more details.
 """
-from os.path import join, dirname
 
 from setuptools import setup
+import re, io
 
-with open(join(dirname(__file__), 'flask_pymodm/__version__.py'), 'r') as f:
-    version = exec(f.read())
+__version__ = re.search(
+    r'__version__\s*=\s*[\'"]([^\'"]*)[\'"]',  # It excludes inline comment too
+    io.open('flask_pymodm/__version__.py'
+            '', encoding='utf_8_sig').read()
+).group(1)
+
+with open("README.md", "r", encoding='utf-8') as fh:
+    long_description = fh.read()
 
 
 def parse_requirements(filename):
@@ -22,18 +28,19 @@ def parse_requirements(filename):
 
 setup(
     name='Flask-Pymodm',
-    version=version,
+    version=__version__,
     url='https://github.com/pbuzulan/flask-pymodm',
     project_urls={
-        "Documentation": "",
+        "Documentation": "https://pbuzulan.github.io/flask-pymodm/",
         "Code": "https://github.com/pbuzulan/flask-pymodm",
         "Issue tracker": "https://github.com/pbuzulan/flask-pymodm/issues",
     },
     license='MIT',
-    author=['Petru Buzulan', 'Daniele Dapuzzo'],
-    author_email=['buzulan.petru@gmail.com', 'daniele.dapuzzo92@gmail.com'],
+    author='Petru Buzulan, Daniele Dapuzzo',
+    author_email='buzulan.petru@gmail.com, daniele.dapuzzo92@gmail.com',
     description="Flask-Pymodm is a simple plugin for Pymodm",
-    long_description='',  # open('README.rst').read(),
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     packages=['flask_pymodm'],
     zip_safe=False,
     include_package_data=True,
