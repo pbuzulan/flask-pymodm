@@ -7,13 +7,13 @@ Flask-PyMODM is the bridge between Flask and PyMODM, it brings to developers a s
 # Quickstart
 
 To start using Flask-PyMODM, install or update it via pip:
-```bash
+```
 pip install Flask-PyMODM
 ```
 
 
 ### A Simple Example
- ```python
+ ```
 from flask import Flask
 from flask_pymodm import PyModm
 
