@@ -52,7 +52,7 @@ To run test suite use the `tox` command.
 Links
 -----
 
--   Documentation: https://flask-sqlalchemy.palletsprojects.com/
+-   Documentation: https://pbuzulan.github.io/flask-pymodm/
 -   Releases: 
 -   Code: https://github.com/pbuzulan/flask-pymodm
 -   Issue tracker: https://github.com/pbuzulan/flask-pymodm/issues
