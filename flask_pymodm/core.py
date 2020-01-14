@@ -9,12 +9,14 @@ class PyModm(object):
 
     def __init__(self, app=None, **kwargs):
         self.app = None
-        if app is None or not isinstance(app, Flask):
-            raise Exception('Invalid Flask application instance')
-
-        self.init_app(app, **kwargs)
+        
+        if app is not None:
+            self.init_app(app, **kwargs)
 
     def init_app(self, app, **kwargs):
+        if app is None or not isinstance(app, Flask):
+            raise Exception('Invalid Flask application instance')
+            
         app.config.setdefault('MONGODB_HOST', 'localhost')
         app.config.setdefault('MONGODB_PORT', '27017')
         app.config.setdefault('MONGODB_DB_NAME', 'my-app')
